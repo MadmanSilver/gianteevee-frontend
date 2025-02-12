@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const pages = ["Home", "Features", "Docs"];

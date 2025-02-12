@@ -1,15 +1,17 @@
-import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 
 interface Props {
   pages: string[];
   activePage: string;
 }
 
-const Navbar = ({ pages, activePage }: Props) => {
+const Navbar2 = ({ pages, activePage }: Props) => {
   return (
-    <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+    <Navbar bg="body-tertiary" expand="lg" className="sticky-top">
+      <Container>
+        <Navbar.Brand href="#home">
           <img
             src="https://cdn.discordapp.com/emojis/849414447604957234.webp?size=96"
             alt="Logo"
@@ -17,35 +19,36 @@ const Navbar = ({ pages, activePage }: Props) => {
             className="d-inline-block align-text-top"
           />
           GiantEevee
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarLandingPage"
+        </Navbar.Brand>
+        <Navbar.Toggle
           aria-controls="navbarLandingPage"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarLandingPage">
-          <div className="navbar-nav me-auto mb-2 mb-lg-0">
+        </Navbar.Toggle>
+        <Navbar.Collapse id="navbarLandingPage">
+          <Nav className="me-auto mb-2 mb-lg-0">
             {pages.map((item) => (
-              <a
-                className={item === activePage ? "nav-link active" : "nav-link"}
+              <Nav.Link
+                className={item === activePage ? "active" : ""}
                 key={item}
                 aria-current={item === activePage && "page"}
-                href="#"
+                href={"#" + item}
               >
                 {item}
-              </a>
+              </Nav.Link>
             ))}
-          </div>
-        </div>
-      </div>
-    </nav>
+          </Nav>
+        </Navbar.Collapse>
+        <Nav>
+          <Nav.Link href="https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=zoj2sxcil0yh5vtdn3tj246g1ke2jo&redirect_uri=http://localhost:3000/api/twitch/callback&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls">
+            Login
+          </Nav.Link>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default Navbar2;

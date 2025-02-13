@@ -14,7 +14,7 @@ pluginNames.forEach((pluginName) => {
 
   plugins.push({
     name: pluginName,
-    component: React.lazy(() => import("../plugins/" + pluginName)),
+    component: React.lazy(() => import(`../plugins/${pluginName}.tsx`)),
   });
 });
 
@@ -36,7 +36,7 @@ function ControlPanel() {
     <div>
       <TabBar
         tabs={pluginNames}
-        activeTab={plugins[0].name}
+        activeTab={activeTab}
         onTabClicked={setActiveTab}
       />
       <div>

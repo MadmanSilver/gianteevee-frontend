@@ -1,22 +1,20 @@
-import { useState } from "react";
-import Alert from "./components/Alert";
-import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Features from "./pages/Features";
+import Docs from "./pages/Docs";
+import ControlPanel from "./pages/ControlPanel";
 
 function App() {
-  const pages = ["Home", "Features", "Docs"];
-
-  const [alertVisible, setAlertVisibility] = useState(false);
-  const [alertContent, setAlertContent] = useState("Hello World!");
-
   return (
-    <div>
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisibility(false)}>{alertContent}</Alert>
-      )}
-
-      <Navbar pages={pages} activePage={pages[0]} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route path="/control-panel" element={<ControlPanel />} />
+      </Routes>
+    </Router>
   );
 }
 
